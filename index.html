@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A professional and scalable Student Activity Record System to manage and showcase student achievements in academics, sports, and more. Built using HTML, CSS, and JavaScript." />
+  <meta property="og:image" content="./assets/images/logo.png" />
+  <title>Student Activity Record System</title>
+  <link rel="icon" href="./assets/images/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3196701718948723"
+     crossorigin="anonymous"></script>
+
+
+  <style>
+    body {
+      background: url('./assets/images/main.jpg') no-repeat center center;
+      background-attachment: local;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      max-width: 400px;
+      width: 90%;
+    }
+    .logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    .institute-name {
+      cursor: pointer;
+      color: white;
+    }
+    .institute-name:hover {
+      color: darkblue;
+    }
+    .btn-glossy {
+      color: white;
+      background-color: blue;
+      border: none;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      box-shadow: inset 0 0 0 0 darkblue;
+    }
+    .btn-glossy:hover {
+      background-color: navy;
+      box-shadow: inset 100px 0 0 0 rgba(255, 255, 255, 0.2);
+    }
+    .btn-back {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 0.9rem;
+      margin-top: 20px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .btn-back i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="./assets/images/logo.png" alt="Institute Logo" class="logo" />
+    <h1>Welcome</h1>
+    <h1>To</h1>
+    <h1 class="institute-name">Dr. N.G.P Institute of Technology</h1>
+
+    <div id="roleSelection">
+      <p style="margin-top: 20px; font-size: 1.2rem;">You are a?</p>
+      <button class="btn-glossy" onclick="selectRole('staff')">Staff</button>
+      <button class="btn-glossy" onclick="selectRole('student')">Student</button>
+    </div>
+
+    <div id="actionButtons" style="display: none;">
+      <p id="roleText" style="margin-top: 20px;"></p>
+      <button class="btn-glossy" id="loginBtn">Login</button>
+      <button class="btn-glossy" id="signupBtn">Sign Up</button>
+      <button class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i>Back</button>
+    </div>
+  </div>
+
+  <script>
+    function selectRole(role) {
+      document.getElementById("roleSelection").style.display = "none";
+      document.getElementById("actionButtons").style.display = "block";
+      document.getElementById("roleText").innerText = role.charAt(0).toUpperCase() + role.slice(1) + " Access";
+
+      document.getElementById("loginBtn").onclick = function () {
+        window.location.href = `./auth/${role}_login.php`;
+      };
+      document.getElementById("signupBtn").onclick = function () {
+        window.location.href = `./auth/${role}_signup.php`;
+      };
+    }
+
+    function goBack() {
+      document.getElementById("actionButtons").style.display = "none";
+      document.getElementById("roleSelection").style.display = "block";
+    }
+  </script>
+</body>
+</html>
